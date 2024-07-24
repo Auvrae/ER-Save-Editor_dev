@@ -116,7 +116,9 @@ impl App {
 
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        ctx.set_zoom_factor(1.75);
+        // Scale Gui to match fractional scaling of the OS
+        ctx.set_pixels_per_point(ctx.pixels_per_point());
+        //ctx.set_zoom_factor(1.75);
         // TOP PANEL
         egui::TopBottomPanel::top("toolbar").default_height(35.).show(ctx, |ui| {
             ui.columns(2, |uis|{
