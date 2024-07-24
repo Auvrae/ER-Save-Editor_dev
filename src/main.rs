@@ -42,16 +42,20 @@ fn main() -> Result<(), eframe::Error> {
     };
 
     eframe::run_native("ER Save Editor 0.0.21", options, Box::new(|creation_context| {
-        let mut fonts = egui::FontDefinitions::default();
-        egui_phosphor::add_to_fonts(&mut fonts, egui_phosphor::Variant::Regular);
-        egui_phosphor::add_to_fonts(&mut fonts, egui_phosphor::Variant::Fill);
-        creation_context.egui_ctx.set_fonts(fonts);
+        /*
+             Until compatibility for egui 0.28.2 reaches egui_phosphor there is a conflict of FontDefinitions..
+        */
+        
+        //let mut fonts = egui::FontDefinitions::default();
+        //egui_phosphor::add_to_fonts(&mut fonts, egui_phosphor::Variant::Regular);
+        //egui_phosphor::add_to_fonts(&mut fonts, egui_phosphor::Variant::Fill);
+        //creation_context.egui_ctx.set_fonts(fonts);
         let mut visuals = creation_context.egui_ctx.style().visuals.clone();
         let rounding = 3.;
         visuals.window_rounding = Rounding::default().at_least(rounding);
         visuals.window_highlight_topmost = false;
         creation_context.egui_ctx.set_visuals(visuals);
-        Box::new(App::new(creation_context))
+        Ok(Box::new(App::new(creation_context)))
     }))
 }
 
