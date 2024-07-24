@@ -79,7 +79,7 @@ pub mod stats {
     }
 
     fn stat_field(body: &mut TableBody, range: RangeInclusive<u32>, name: &str, value: &mut u32) {
-        let field = egui::widgets::DragValue::new(value).clamp_range(range);
+        let field = egui::widgets::DragValue::new(value).range(range);
         body.row(24., |mut row| {
             row.col(|ui| {
                 ui.label(name);
