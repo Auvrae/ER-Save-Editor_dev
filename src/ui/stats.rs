@@ -60,7 +60,7 @@ pub mod stats {
 
                         // Souls
                         let field = egui::widgets::DragValue::new(&mut vm.slots[vm.index].stats_vm.souls)
-                            .clamp_range(0..=999999999)
+                            .range(0..=999999999)
                             .custom_formatter(|n, _|{
                                 format!("{:09}", n)
                             });
